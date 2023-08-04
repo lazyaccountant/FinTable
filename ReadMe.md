@@ -1,8 +1,11 @@
-# FinTable - Financial Statement Extraction Tool
+```
+# FinTable - Financial Statement Extraction Tool with CustomTkinter GUI
 
 ## Overview
 
 FinTable is a Python-based financial statement extraction tool designed to extract financial data from annual reports in PDF format. It utilizes various libraries and regex patterns to parse financial tables and produce structured datasets for statements of financial position (SOFP), statements of profit or loss (SOPL), and statements of cash flow (SOCF). This tool simplifies the process of extracting financial information and saves the extracted data as CSV files.
+
+**New!** FinTable now features a user-friendly CustomTkinter GUI for seamless interaction.
 
 ## Features
 
@@ -10,26 +13,49 @@ FinTable is a Python-based financial statement extraction tool designed to extra
 - Identification of relevant financial statements based on keywords and regex patterns.
 - Clean-up and organization of extracted financial data.
 - Support for extracting financial statements from both regular companies and banks (with customizable keyword lists).
+- User-friendly CustomTkinter GUI for easy interaction and file handling.
 
 ## Requirements
 
-To use FinTable, you need the following dependencies:
+To use FinTable with GUI, you need the following dependencies:
 
 - Python 3.x
 - Libraries:
   - camelot
   - PyMuPDF
   - pandas
+  - CustomTkinter (custom GUI library)
 
 You can install these dependencies using pip:
 
 ```bash
-pip install camelot pymupdf pandas
+pip install camelot pymupdf pandas customtkinter
 ```
 
 ## Usage
 
-To use FinTable, you can follow the steps below:
+To use FinTable with the GUI, follow these steps:
+
+1. Run the `FinTable.v1_GUI.py` script:
+
+```bash
+python FinTable.v1_GUI.py
+
+```
+
+2. The CustomTkinter GUI window will open, allowing you to interact with the tool.
+
+3. Click on the "Upload File" button to select your PDF annual report.
+
+4. Toggle the "Bank" option if the company is a bank, or leave it unchecked for a regular company.
+
+5. Choose the type of report you want to extract from the dropdown menu.
+
+6. Click on the "Download CSV" button to save the extracted financial data as a CSV file.
+
+7. Optionally, you can click on the "New Upload" button to upload another file and perform additional extractions.
+
+To run FinTable with code, you can follow the steps below:
 
 1. Import the required libraries and classes:
 
@@ -101,3 +127,4 @@ We welcome contributions to FinTable. If you encounter any issues or have sugges
 ## Contact
 
 For any questions or inquiries, please contact me at [enyocollins@gmail.com](mailto:enyocollins@gmail.com).
+```
