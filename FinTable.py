@@ -182,4 +182,6 @@ class AnnualReport:
         SOPL - Statement of profit or loss"""
 
         report = self.report(type)
-        report.to_csv(f"{self.file[:-4]}-{type}.csv", encoding="utf-8-sig", header=False)
+        filename = f"{self.file[:-4]}-{type}.csv"
+        report.to_csv(filename, encoding="utf-8-sig", header=False)
+        return filename
