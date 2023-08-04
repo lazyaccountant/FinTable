@@ -45,10 +45,10 @@ python FinTable.v1_GUI.py
 2. The CustomTkinter GUI window will open, allowing you to interact with the tool.
 
 3. Click on the "Upload File" button to select your PDF annual report.
-![Tutorial](/jpgs/FinTable.JPG)
+![Tutorial](/pngs/FinTable.png)
 
 4. Toggle the "Bank" option if the company is a bank, or leave it unchecked for a regular company.
-![Bank Toggle](/jpgs/FinTable1.JPG)
+![Bank Toggle](/pngs/FinTable1.png)
 
 5. Choose the type of report you want to extract from the dropdown menu.
 
