@@ -1,4 +1,3 @@
-```
 # FinTable - Financial Statement Extraction Tool with CustomTkinter GUI
 
 ## Overview
