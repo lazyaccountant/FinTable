@@ -31,11 +31,27 @@ class AnnualReport:
                     "SOCF": ["cash flows", "investing", "operating", "financing"]
                 }
 
+        if isinstance(self.file, str):
+            self.memory = False
+
+        else:
+            self.memory = True
+
     # read pages of annual report pdf file
     def _read_report(self, file: str):
-        pages = fitz.open(file)
+        if self.memory:
+            pages = fitz.open(
+                None,
+                stream=file,
+            )
+        else:
+            pages = fitz.open(
+                file,
+                filetype="pdf"
+            )
         return pages
     
+
     # function to shift the column number by index number to help rearrange columns
     def _next_no(self, column_name: int, index: int) -> int:
         no = column_name + index
@@ -136,7 +152,9 @@ class AnnualReport:
         self.page_match = {}
         self.page_no = None  # Initialize self.page_no to None before the loop
 
-        for index, page in enumerate(self._read_report(self.file)):
+        self.document = self._read_report(self.file)
+
+        for index, page in enumerate(self.document):
             self.page = page.get_text().lower()
             self.found = 0
 
