@@ -3,6 +3,7 @@ import fitz
 import re
 import pandas as pd
 from datetime import datetime
+from file_utils import io_to_pdf
 
 
 class AnnualReport:
@@ -125,12 +126,21 @@ class AnnualReport:
 
     # view tables on pages with financial report
     def _view_report(self, page_no: str):
-        tables = camelot.read_pdf(
-            self.file,
-            flavor="stream",
-            pages=page_no,
-            edge_tol = 150
-        )
+        if not self.memory:
+            tables = camelot.read_pdf(
+                self.file,
+                flavor="stream",
+                pages=page_no,
+                edge_tol = 150
+            )
+        else:
+            temp_file = io_to_pdf(self.file)
+            tables = camelot.read_pdf(
+                temp_file[1].name,
+                flavor="stream",
+                pages=page_no,
+                edge_tol = 150
+            )
         if len(page_no.split(",")) > 1:
             tablist = [self._split_columns(table.df) for table in tables]
             return tablist
@@ -203,3 +213,10 @@ class AnnualReport:
         filename = f"{self.file[:-4]}-{type}.csv"
         report.to_csv(filename, encoding="utf-8-sig", header=False)
         return filename
+    
+    def download_report(self, type: str, name: str):
+
+        report = self.report(type)
+        filename = f"{name[:-4]}-{type}.csv"
+        
+        return report, filename
